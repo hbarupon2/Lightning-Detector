@@ -120,6 +120,15 @@ Issues and pull requests welcome. Please:
 2. Add or update tests for behavior changes
 3. Keep `dsp/` free of hardware imports
 
+## AI-generated code
+
+For large AI-written changes such as full functions, files, or multi-step refactors:
+
+1. Tests must pass before the change is merged.
+2. A human must review and understand every AI-written change before merging.
+3. All design choices must be explained by a human in the PR description.
+4. Small one-line or lookup-style edits are lower risk, but still require human review before merging.
+5. Keep personal AI markdown files, private prompts, chat exports, and scratch scripts out of the repository.
 
 
 ## License

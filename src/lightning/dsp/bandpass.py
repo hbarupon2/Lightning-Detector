@@ -15,6 +15,7 @@ def bandpass_filter(
     sample_rate: int,
     low_hz: float,
     high_hz: float,
+    filter_order: int = 4,
 ) -> np.ndarray:
     """Apply a bandpass filter to the signal.
 
@@ -33,7 +34,7 @@ def bandpass_filter(
     # First we design the filter.
     # We use the butterworth bandpass filter with second-order sections output
     # since it's the most numerically stable.
-    sos = butter(4, [low_hz, high_hz], btype='band', fs=sample_rate, output='sos')
+    sos = butter(filter_order, [low_hz, high_hz], btype='band', fs=sample_rate, output='sos')
 
     # Next we apply the filter to the signal
     # and return the filtered signal.

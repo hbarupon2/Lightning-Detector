@@ -8,6 +8,7 @@ so we can apply a bandpass filter to the signal to remove the frequencies outsid
 from __future__ import annotations
 
 import numpy as np
+from scipy.signal import butter, sosfilt
 
 def bandpass_filter(
     samples: np.ndarray,
@@ -29,4 +30,12 @@ def bandpass_filter(
     if samples.ndim != 1:
         raise ValueError("samples must be 1-D")
 
-    raise NotImplementedError("Not implemented yet")
+    # First we design the filter.
+    # We use the butterworth bandpass filter with second-order sections output
+    # since it's the most numerically stable.
+    sos = butter(4, [low_hz, high_hz], btype='band', fs=sample_rate, output='sos')
+
+    # Next we apply the filter to the signal
+    # and return the filtered signal.
+    filtered = sosfilt(sos, samples)
+    return filtered

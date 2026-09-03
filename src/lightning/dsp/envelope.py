@@ -30,21 +30,18 @@ def envelope_detect(
         raise ValueError("samples must be 1-D")
 
 
-    """First we rectify the samples. 
-    AC signals have negative and positive values, so we take the absolute value to get a signal that is always positive.
-    """
+    # First we rectify the samples. 
+    # AC signals have negative and positive values, so we take the absolute value to get a signal that is always positive.
     samples = np.abs(samples)
 
-    """Next, we apply a moving average filter to the samples.
-    This is a simple filter that averages the samples over a window of time.
-    The window size is determined by the envelope_window_s parameter.
-    This is needed to smooth out the signal and remove noise/instantaneous spikes.
-    """
+    # Next, we apply a moving average filter to the samples.
+    # This is a simple filter that averages the samples over a window of time.
+    # The window size is determined by the envelope_window_s parameter.
+    # This is needed to smooth out the signal and remove noise/instantaneous spikes.
     window_samples = max(1, int(envelope_window_s * sample_rate))
     window_samples = min(window_samples, samples.shape[0])
     envelope = np.convolve(samples, np.ones(window_samples) / window_samples, mode='same')
 
-    """Finally, we find the indices where the envelope exceeds the threshold.
-    """
+    # Finally, we find the indices where the envelope exceeds the threshold.
     indices = np.where(envelope > threshold)[0]
     return indices

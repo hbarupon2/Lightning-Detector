@@ -29,14 +29,10 @@ Python research platform for detecting lightning strikes and estimating distance
 | Fusion, event bus, hardware adapters | End-to-end pipeline                     | Planned |
 
 
-
-
 ## Requirements
 
 - Python 3.11+
 - NumPy, SciPy, PyYAML (installed automatically)
-
-
 
 ## Setup
 
@@ -55,8 +51,6 @@ Optional extras:
 ```bash
 pip install -e ".[dev,audio,plot]"   # sounddevice (Pi), matplotlib
 ```
-
-
 
 ## Project layout
 
@@ -97,19 +91,17 @@ pytest tests/test_bandpass.py   # thunder bandpass filter
 pytest tests/test_onset.py      # thunder onset detection
 ```
 
-
-
 ## Milestones
 
 
-| #   | Task                                             | Hardware? |
-| --- | ------------------------------------------------ | --------- |
-| 1   | `envelope.py` + pytest                           | No        |
-| 2   | `bandpass.py`, `onset.py`, `gcc_phat.py`         | No        |
-| 3   | Event bus + SQLite + simulated source            | No        |
-| 4   | Fusion (RF → thunder delay → distance + bearing) | No        |
-| 5   | AM radio on Pi                                   | Yes       |
-| 6   | Mic array + calibration                          | Yes       |
+| #    | Task                                             | Hardware? |
+| ---- | ------------------------------------------------ | --------- |
+| ✔️ 1 | `envelope.py` + pytest                           | No        |
+| ❌ 2  | `bandpass.py`, `onset.py`, `gcc_phat.py`         | No        |
+| ❌ 3  | Event bus + SQLite + simulated source            | No        |
+| ❌ 4  | Fusion (RF → thunder delay → distance + bearing) | No        |
+| ❌ 5  | AM radio on Pi                                   | Yes       |
+| ❌ 6  | Mic array + calibration                          | Yes       |
 
 
 ## Contributing
@@ -129,7 +121,6 @@ For large AI-written changes such as full functions, files, or multi-step refact
 3. All design choices must be explained by a human in the PR description.
 4. Small one-line or lookup-style edits are lower risk, but still require human review before merging.
 5. Keep personal AI markdown files, private prompts, chat exports, and scratch scripts out of the repository.
-
 
 ## License
 

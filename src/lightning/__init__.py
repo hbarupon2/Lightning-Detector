@@ -1,0 +1,1 @@
+"""Lightning detection research platform."""

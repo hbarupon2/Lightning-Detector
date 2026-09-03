@@ -1,0 +1,28 @@
+# All tunables live here — retune on real hardware without code changes.
+
+source: simulated   # simulated | wav | sounddevice (Pi)
+
+rf:
+  sample_rate: 44100
+  envelope_threshold: 0.15   # retune when AM radio is connected
+  envelope_window_s: 0.0009
+  chunk_ms: 100
+
+mic_array:
+  bandpass:
+    low_hz: 20
+    high_hz: 300
+  sample_rate: 44100
+  n_channels: 4
+  # meters, relative to array center — fill in when hardware arrives
+  positions_m:
+    - [0.0, 0.035, 0.0]
+    - [-0.035, 0.0, 0.0]
+    - [0.0, -0.035, 0.0]
+    - [0.035, 0.0, 0.0]
+  heading_deg: 0.0
+
+fusion:
+  thunder_window_min_s: 2.0
+  thunder_window_max_s: 30.0
+  sound_speed_m_s: 343.0

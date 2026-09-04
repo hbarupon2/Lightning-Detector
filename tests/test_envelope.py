@@ -4,25 +4,7 @@ import numpy as np
 import pytest
 
 from lightning.dsp.envelope import envelope_detect
-
-
-def make_synthetic_spike(
-    duration_s: float = 2.0,
-    sample_rate: int = 44100,
-    spike_at_s: float = 1.0,
-    spike_amplitude: float = 0.9,
-) -> np.ndarray:
-    """Quiet noise floor + one sharp crackle (like an AM sferic)."""
-    n = int(duration_s * sample_rate)
-    rng = np.random.default_rng(42)
-    signal = rng.normal(0, 0.01, n).astype(np.float64)
-
-    spike_idx = int(spike_at_s * sample_rate)
-    width = 50  # samples — short burst
-    burst = spike_amplitude * np.exp(-np.linspace(0, 8, width))
-    signal[spike_idx : spike_idx + width] += burst
-
-    return signal
+from tests.fixtures.signals import make_synthetic_spike
 
 
 def test_finds_single_spike():

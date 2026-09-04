@@ -1,7 +1,6 @@
 """Generalized Cross-Correlation with Phase Transform (GCC-PHAT)
 
-Uses uses differences in thunder arrivales between microphones to estimate
-the bearing.
+Computes the time delay between two thunder arrivals.
 """
 
 from __future__ import annotations
@@ -12,8 +11,8 @@ import numpy as np
 def gcc_phat(
     signal1: np.ndarray,
     signal2: np.ndarray,
-) -> float:
-    """Calculate the GCC-PHAT between two signals.
+) -> int:
+    """Calculate the GCC-PHAT time delay between two signals.
     """
 
     if signal1.ndim != 1 or signal2.ndim != 1:
